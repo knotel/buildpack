@@ -1,0 +1,5 @@
+
+#!/bin/bash
+
+echo "Knotel Buildpack"
+exit 0
