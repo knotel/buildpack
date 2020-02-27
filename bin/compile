@@ -17,7 +17,6 @@ cd $cache
 
 echo "-----> Downloading SQLite"
 if [ ! -s sqlite-autoconf-3310100.tar.gz ]; then
-
   curl -so sqlite-autoconf-3310100.tar.gz \
     https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz \
     | indent
@@ -30,7 +29,16 @@ if [ ! -s sqlite-autoconf-3310100 ]; then
 fi
 
 echo "-----> Building SQLite"
-cd sqlite-autoconf-3310100
-./configure --prefix=$build | indent
-make | indent
-make install | indent
+if [ ! -s "$build/vendor/sqlite" ]; then
+  cd sqlite-autoconf-3310100
+  ./configure --prefix=$build/vendor/sqlite | indent
+  make | indent
+fi
+
+echo "-----> Installing SQLite"
+if [ ! -s "$build/vendor/sqlite" ]; then
+  make install | indent
+  echo <<EOF >> $build/.profile.d/sqlite.sh
+PATH=$PATH:$HOME/vendor/sqlite
+EOF
+fi
