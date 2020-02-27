@@ -38,6 +38,7 @@ fi
 echo "-----> Installing SQLite"
 if [ ! -s "$build/vendor/sqlite" ]; then
   make install | indent
+  mkdir -p $build/.profile.d
   echo <<EOF >> $build/.profile.d/sqlite.sh
 PATH=$PATH:$HOME/vendor/sqlite
 EOF
