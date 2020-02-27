@@ -38,6 +38,8 @@ fi
 echo "-----> Installing SQLite"
 if [ ! -s "$build/vendor/sqlite3" ]; then
   make install | indent
-  mkdir -p $build/.profile.d
-  echo "--with-sqlite3-dir=$HOME/vendor/sqlite3" >> $env_dir/BUNDLE_BUILD__SQLITE3
+  # mkdir -p $build/.profile.d
+  echo '--with-sqlite3-dir=$HOME/vendor/sqlite3' > $env_dir/BUNDLE_BUILD__SQLITE3
+  echo '$LD_LIBRARY_PATH:$HOME/vendor/sqlite3' > $env_dir/LD_LIBRARY_PATH
+  cat $env_dir/LD_LIBRARY_PATH
 fi
