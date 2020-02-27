@@ -8,6 +8,6 @@ env_dir="${3}"
 BIN_DIR=$(cd $(dirname $0); pwd)
 BUILDPACK_DIR=$(dirname $BIN_DIR)
 
-source "$BIN_DIR/support/functions.sh"
-source "$BIN_DIR/support/sqlite3.sh"
-source "$BIN_DIR/support/libvips.sh"
+. "$BIN_DIR/support/functions.sh" $1 $2 $3
+. "$BIN_DIR/support/sqlite3.sh" $1 $2 $3
+. "$BIN_DIR/support/libvips.sh" $1 $2 $3
