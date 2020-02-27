@@ -40,5 +40,4 @@ if [ ! -s "$build/vendor/sqlite3" ]; then
   make install | indent
   mkdir -p $build/.profile.d
   echo "--with-sqlite3-dir=$HOME/vendor/sqlite3" >> $env_dir/BUNDLE_BUILD__SQLITE3
-EOF
 fi
