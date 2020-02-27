@@ -3,7 +3,7 @@
 echo "-----> Downloading SQLite"
 if [ ! -s sqlite-autoconf-3310100.tar.gz ]; then
   cd $cache
-  curl -so sqlite-autoconf-3310100.tar.gz \
+  curl -Lso sqlite-autoconf-3310100.tar.gz \
     https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz \
     | indent
 fi

@@ -3,7 +3,7 @@
 echo "-----> Downloading libvips"
 if [ ! -s vips-8.9.1.tar.gz ]; then
   cd $cache
-  curl -so vips-8.9.1.tar.gz \
+  curl -Lso vips-8.9.1.tar.gz \
     https://github.com/libvips/libvips/releases/download/v8.9.1/vips-8.9.1.tar.gz \
     | indent
 fi
