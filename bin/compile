@@ -11,8 +11,20 @@ BUILDPACK_DIR=$(dirname $BIN_DIR)
 source "$BIN_DIR/support/functions.sh"
 
 mkdir -p $env_dir
-echo "$LD_LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LD_LIBRARY_PATH
-echo "$LD_RUN_PATH:$build/vendor/lib" >> $env_dir/LD_RUN_PATH
+echo "PATH=\$PATH:$build/vendor/bin" >> $build/.profile.d/knotel-mainframe.sh
+
+echo "\$LD_LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LD_LIBRARY_PATH
+echo "\$LD_RUN_PATH:$build/vendor/lib" >> $env_dir/LD_RUN_PATH
+echo "\$LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LIBRARY_PATH
+echo "\$INCLUDE_PATH:$build/vendor/lib" >> $env_dir/INCLUDE_PATH
+
+export PATH=$PATH:$build/vendor/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$build/vendor/lib
+export LD_RUN_PATH=$LD_RUN_PATH:$build/vendor/lib
+export LIBRARY_PATH=$LIBRARY_PATH:$build/vendor/lib
+export INCLUDE_PATH=$INCLUDE_PATH:$build/vendor/lib
+export CPATH=$INCLUDE_PATH
+export CPPPATH=$INCLUDE_PATH
 
 packages=(sqlite3 libvips geos proj)
 for package in ${packages[*]}
