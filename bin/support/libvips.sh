@@ -23,8 +23,9 @@ if [ ! -s "$build/vendor/libvips" ]; then
   cd ..
 fi
 
-echo "-----> Installing SQLite"
+echo "-----> Installing libvips"
 if [ ! -s "$build/vendor/libvips" ]; then
   cd $cache/vips-8.9.1
   make install | indent
+  echo "$LD_LIBRARY_PATH:$build/vendor/libvips/lib" >> $env_dir/LD_LIBRARY_PATH
 fi

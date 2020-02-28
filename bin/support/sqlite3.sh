@@ -28,5 +28,5 @@ if [ ! -s "$build/vendor/sqlite3" ]; then
   cd $cache/sqlite-autoconf-3310100
   make install | indent
   echo "--with-sqlite3-dir=$build/vendor/sqlite3" >> $env_dir/BUNDLE_BUILD__SQLITE3
-  echo "$LD_LIBRARY_PATH:$build/vendor/sqlite3" >> $env_dir/LD_LIBRARY_PATH
+  echo "$LD_LIBRARY_PATH:$build/vendor/sqlite3/lib" >> $env_dir/LD_LIBRARY_PATH
 fi
