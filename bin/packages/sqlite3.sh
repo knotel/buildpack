@@ -5,6 +5,8 @@ build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
 env_dir=$(cd "$3/" && pwd)
 
+mkdir -p $build $cache
+
 echo "-----> Downloading SQLite"
 if [ ! -s sqlite-autoconf-$pkgver.tar.gz ]; then
   cd $cache

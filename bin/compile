@@ -14,9 +14,9 @@ mkdir -p $env_dir
 echo "$LD_LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LD_LIBRARY_PATH
 echo "$LD_RUN_PATH:$build/vendor/lib" >> $env_dir/LD_RUN_PATH
 
-packages=(sqlite3 libvips)
+packages=(sqlite3 geos proj)
 for package in ${packages[*]}
 do
   mkdir -p $1/vendor $2/$package
-  source "$BIN_DIR/packages/$package.sh" $build/vendor $cache/$package $env_dir
+  bash "$BIN_DIR/packages/$package.sh" $build/vendor $cache/$package $env_dir
 done
