@@ -10,8 +10,8 @@ BUILDPACK_DIR=$(dirname $BIN_DIR)
 
 source "$BIN_DIR/support/functions.sh"
 
-mkdir -p $env_dir
-echo "PATH=\$PATH:$build/vendor/bin" >> $build/.profile.d/knotel-mainframe.sh
+mkdir -p $env_dir $build/.profile.d
+echo "PATH=\$PATH:$build/vendor/bin" > $build/.profile.d/knotel-mainframe.sh
 
 echo "\$LD_LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LD_LIBRARY_PATH
 echo "\$LD_RUN_PATH:$build/vendor/lib" >> $env_dir/LD_RUN_PATH
