@@ -18,5 +18,5 @@ packages=(sqlite3 libvips geos proj)
 for package in ${packages[*]}
 do
   mkdir -p $1/vendor $2/$package
-  bash -c "$BIN_DIR/packages/$package.sh" $build/vendor $cache/$package $env_dir
+  (source "$BIN_DIR/packages/$package.sh" $build/vendor $cache/$package $env_dir)
 done
