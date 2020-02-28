@@ -1,13 +1,22 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
-env_dir="${3}"
+env_dir=$(cd "$3/" && pwd)
 
 BIN_DIR=$(cd $(dirname $0); pwd)
 BUILDPACK_DIR=$(dirname $BIN_DIR)
 
-. "$BIN_DIR/support/functions.sh" $1 $2 $3
-. "$BIN_DIR/support/sqlite3.sh" $1 $2 $3
-. "$BIN_DIR/support/libvips.sh" $1 $2 $3
+source "$BIN_DIR/support/functions.sh" $1 $2 $3
+
+mkdir -p $env_dir
+echo "$LD_LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LD_LIBRARY_PATH
+echo "$LD_RUN_PATH:$build/vendor/lib" >> $env_dir/LD_RUN_PATH
+
+packages=(sqlite3 libvips)
+for package in ${packages[*]}
+do
+  mkdir -p $1/vendor $2/$package
+  source "$BIN_DIR/packages/$package.sh" $build/vendor $cache/$package $env_dir
+done
