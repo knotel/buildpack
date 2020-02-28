@@ -34,5 +34,5 @@ echo "-----> Installing GEOS"
 if [ ! -s "$build/lib/libgeos.a" ]; then
   cd $cache/geos-$pkgver
   make install | indent
-  echo "--with-geos-dir=$build --with-proj-dir=$build" >> $env_dir/BUNDLE_BUILD__RGEO
+  echo "--with-opt-dir=$build --with-geos-dir=$build --with-proj-dir=$build" >> $env_dir/BUNDLE_BUILD__RGEO
 fi

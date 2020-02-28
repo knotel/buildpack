@@ -35,4 +35,3 @@ if [ ! -s "$build/lib/libproj.a" ]; then
   cd $cache/proj-$pkgver
   make install | indent
 fi
-
