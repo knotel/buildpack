@@ -32,3 +32,6 @@ do
   mkdir -p $1/vendor $2/$package
   (source "$BIN_DIR/packages/$package.sh" $build/vendor $cache/$package $env_dir)
 done
+
+echo $PATH
+which node
