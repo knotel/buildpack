@@ -19,6 +19,7 @@ echo "\$LIBRARY_PATH:$build/vendor/lib" >> $env_dir/LIBRARY_PATH
 echo "\$INCLUDE_PATH:$build/vendor/lib" >> $env_dir/INCLUDE_PATH
 
 export PATH=$PATH:$build/vendor/bin
+export PKG_CONFIG_PATH=$build/vendor/lib/pkgconfig
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$build/vendor/lib
 export LD_RUN_PATH=$LD_RUN_PATH:$build/vendor/lib
 export LIBRARY_PATH=$LIBRARY_PATH:$build/vendor/lib
