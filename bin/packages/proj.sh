@@ -23,11 +23,10 @@ if [ ! -s proj-$pkgver ]; then
 fi
 
 echo "-----> Building PROJ"
-if [ ! -s "$build/lib/libproj.a" ]; then
+if [ ! -s "$cache/proj-$pkgver/src/.libs/libproj.a" ]; then
   cd $cache/proj-$pkgver
   ./configure --prefix=$build | indent
   make | indent
-  cd ..
 fi
 
 echo "-----> Installing PROJ"

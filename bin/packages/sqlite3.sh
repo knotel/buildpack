@@ -23,11 +23,10 @@ if [ ! -s sqlite-autoconf-$pkgver ]; then
 fi
 
 echo "-----> Building SQLite"
-if [ ! -s "$build/lib/libsqlite3.a" ]; then
+if [ ! -s "$cache/sqlite-autoconf-$pkgver/.libs/libsqlite3.a" ]; then
   cd $cache/sqlite-autoconf-$pkgver
   ./configure --prefix=$build | indent
   make | indent
-  cd ..
 fi
 
 echo "-----> Installing SQLite"

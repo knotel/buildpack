@@ -23,11 +23,10 @@ if [ ! -s geos-$pkgver ]; then
 fi
 
 echo "-----> Building GEOS"
-if [ ! -s "$build/lib/libgeos.a" ]; then
+if [ ! -s "$cache/geos-$pkgver/src/.libs/libgeos.a" ]; then
   cd $cache/geos-$pkgver
   ./configure --prefix=$build | indent
   make | indent
-  cd ..
 fi
 
 echo "-----> Installing GEOS"
