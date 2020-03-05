@@ -7,8 +7,10 @@ env_dir=$(cd "$3/" && pwd)
 
 mkdir -p $build $cache
 
+ls $cache
+
 echo "-----> Downloading SQLite"
-if [ ! -s sqlite-autoconf-$pkgver.tar.gz ]; then
+if [ ! -s "$cache/sqlite-autoconf-$pkgver.tar.gz" ]; then
   cd $cache
   curl -Lso sqlite-autoconf-$pkgver.tar.gz \
     https://sqlite.org/2020/sqlite-autoconf-$pkgver.tar.gz \
@@ -16,7 +18,7 @@ if [ ! -s sqlite-autoconf-$pkgver.tar.gz ]; then
 fi
 
 echo "-----> Unarchiving SQLite"
-if [ ! -s sqlite-autoconf-$pkgver ]; then
+if [ ! -s "$cache/sqlite-autoconf-$pkgver" ]; then
   cd $cache
   mkdir -p sqlite-autoconf-$pkgver
   tar -xf sqlite-autoconf-$pkgver.tar.gz
